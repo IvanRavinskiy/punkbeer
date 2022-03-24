@@ -1,17 +1,25 @@
 const path = require('path');
-const watchFolders = [
-  path.resolve(__dirname + '../../components'),
-  // path.resolve(__dirname + '../../node_modules')
-];
 
-module.exports = {
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: true,
-      },
-    }),
+const currentDir = __dirname;
+
+const config = {
+  watchFolders: [path.resolve(currentDir, '../../components')],
+
+  resolver: {
+    extraNodeModules: {
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'react-native': path.resolve(currentDir, 'node_modules/react-native'),
+      'react-navigation': path.resolve(
+        currentDir,
+        'node_modules/react-navigation',
+      ),
+      'react-native-vector-icons': path.resolve(
+        currentDir,
+        'node_modules/react-native-vector-icons',
+      ),
+      '@babel/runtime': path.resolve(currentDir, 'node_modules/@babel/runtime'),
+    },
   },
-  watchFolders,
 };
+
+module.exports = config;
