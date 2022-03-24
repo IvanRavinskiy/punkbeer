@@ -17,6 +17,9 @@
     ]
   },
   "scripts": {
-    "start": "lerna exec --scope @iwann/web -- yarn start"
+    "startweb": "lerna exec --scope @iwann/web -- yarn start",
+    "startmobileserv": "lerna exec --scope @iwann/mobile -- yarn start",
+    "startapp": "lerna exec --scope @iwann/mobile -- yarn android"
+
   }
 }
