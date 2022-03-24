@@ -2,7 +2,7 @@
   "dependencies": {
     "lerna": "^4.0.0"
   },
-  "name": "punkbeer",
+  "name": "@iwann/punkbeer",
   "private": true,
   "workspaces": {
     "packages": [
