@@ -9,5 +9,8 @@
       "apps/*",
       "components/*"
     ]
+  },
+  "scripts": {
+    "start": "lerna exec --scope @iwann/web -- yarn start"
   }
 }
