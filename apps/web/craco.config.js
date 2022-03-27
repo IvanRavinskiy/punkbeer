@@ -6,7 +6,7 @@ packages.push(path.join(__dirname, "../../components"));
 
 module.exports = {
     webpack: {
-        configure: (webpackConfig, arg) => {
+        configure: (webpackConfig) => {
             const { isFound, match } = getLoader(
                 webpackConfig,
                 loaderByName("babel-loader")
@@ -19,6 +19,6 @@ module.exports = {
                 match.loader.include = include.concat(packages);
             }
             return webpackConfig;
-        },
-    },
+        }
+    }
 };

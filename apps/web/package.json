@@ -21,7 +21,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "lint": "eslint -c .eslintrc.js --ext .js,.jsx,.ts,.tsx .",
+    "lint:fix": "yarn run lint --fix"
   },
   "eslintConfig": {
     "extends": [
