@@ -2,5 +2,9 @@
   "name": "@iwann/api",
   "version": "0.1.0",
   "main": "src/index.ts",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.26.1"
+  }
 }
