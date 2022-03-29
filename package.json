@@ -18,7 +18,7 @@
     ]
   },
   "scripts": {
-    "bootstrap": "lerna clean --yes && rimraf node_modules && yarn && lerna bootstrap",
+    "bootstrap": "npx lerna clean --yes && npx rimraf node_modules && npx lerna bootstrap",
     "startweb": "lerna run --scope @iwann/web start",
     "startmobileserv": "lerna run --scope @iwann/mobile start",
     "startapp": "lerna run --scope @iwann/mobile android"
