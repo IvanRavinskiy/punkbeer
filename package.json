@@ -18,8 +18,7 @@
     ]
   },
   "scripts": {
-    "updatedependence": "lerna clean && yarn",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna clean --yes && rm -rf node_modules && yarn && lerna bootstrap",
     "startweb": "lerna run --scope @iwann/web start",
     "startmobileserv": "lerna run --scope @iwann/mobile start",
     "startapp": "lerna run --scope @iwann/mobile android"
