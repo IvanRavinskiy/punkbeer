@@ -13,6 +13,7 @@
     "@iwann/greeting": "0.1.0",
     "react": "17.0.2",
     "react-native": "0.67.4",
+    "react-native-config": "^1.4.5",
     "typescript": "^4.6.2"
   },
   "devDependencies": {

@@ -14,13 +14,14 @@
     "nohoist": [
       "**/react-native",
       "**/react-native/**",
-      "**/react-native-typescript-transformer"
+      "**/react-native-typescript-transformer",
+      "**/react-native-config"
     ]
   },
   "scripts": {
     "bootstrap": "npx lerna clean --yes && npx rimraf node_modules && npx lerna bootstrap",
     "startweb": "lerna run --scope @iwann/web start",
-    "startmobileserv": "lerna run --scope @iwann/mobile start",
+    "startmobileserv": "cp .env apps/mobile && lerna run --scope @iwann/mobile start",
     "startapp": "lerna run --scope @iwann/mobile android"
   }
 }
