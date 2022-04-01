@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export const createAPI = () => {
+export const createAPI = (baseURL: string) => {
 
     const instance = axios.create({
-        baseURL: 'https://api.punkapi.com/v2/'
+        baseURL: baseURL
+        // baseURL: 'https://api.punkapi.com/v2/'
     })
 
     const getBeer = instance.get<BeerType[]>('beers')

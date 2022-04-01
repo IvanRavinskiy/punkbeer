@@ -1,6 +1,12 @@
 const path = require("path");
 const { getLoader, loaderByName } = require("@craco/craco");
 
+// require('dotenv').config({
+//     path: path.join(process.cwd(), '..', '..', '.env'),
+// });
+//
+// module.exports = process.env;
+
 const packages = [];
 packages.push(path.join(__dirname, "../../components"));
 
