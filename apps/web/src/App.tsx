@@ -1,11 +1,11 @@
 import { greeting } from "@iwann/greeting";
 import { createAPI } from "@iwann/api";
 import { AppRootStateType } from "@iwann/store";
-import {decreaseAC, increaseAC} from "@iwann/store/src/appReducer";
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import {useDispatch, useSelector} from "react-redux";
+import {decrease, increase} from "@iwann/store/src/appReducer";
 
 
 function App() {
@@ -16,10 +16,10 @@ function App() {
     const dispatch = useDispatch()
 
     const onIncreaseClick = () => {
-        dispatch(increaseAC(value))
+        dispatch(increase(value))
     }
     const onDecreaseClick = () => {
-        dispatch(decreaseAC(value))
+        dispatch(decrease(value))
     }
     return (
         <div className="App">

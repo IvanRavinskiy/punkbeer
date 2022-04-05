@@ -1,11 +1,24 @@
-import { combineReducers, createStore } from "redux";
-import {appReducer} from "./appReducer";
+// import { combineReducers, createStore } from "redux";
+import appReducer from "./appReducer";
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers ({
-    app: appReducer,
+const rootReducer = combineReducers({
+    app: appReducer
+})
+export const store = configureStore({
+    reducer: rootReducer
 })
 
-export const store = createStore(rootReducer)
+export type AppRootStateType = ReturnType<typeof store.getState>
 
-export type AppRootStateType = ReturnType<typeof rootReducer>
+export type AppDispatch = typeof store.dispatch
+
+
+// const rootReducer = combineReducers ({
+//     app: appReducer,
+// })
+
+// export const store = createStore(rootReducer)
+
+// export type AppRootStateType = ReturnType<typeof rootReducer>
 
