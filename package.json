@@ -18,8 +18,8 @@
   },
   "scripts": {
     "bootstrap": "npx lerna clean --yes && npx rimraf node_modules && npx lerna bootstrap",
-    "startweb": "npx lerna run --scope @iwann/web start",
-    "startmobileserv": "cp .env apps/mobile && npx lerna run --scope @iwann/mobile start",
-    "startapp": "npx lerna run --scope @iwann/mobile android"
+    "start-mobile-android": "npx lerna run --scope @iwann/mobile android",
+    "start-mobile-server": "cp .env apps/mobile && npx lerna run --scope @iwann/mobile start",
+    "start-web": "npx lerna run --scope @iwann/web start"
   }
 }
