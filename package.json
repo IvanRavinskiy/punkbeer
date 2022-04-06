@@ -1,7 +1,6 @@
 {
   "dependencies": {
-    "eslint-plugin-import": "^2.25.4",
-    "lerna": "^4.0.0"
+    "eslint-plugin-import": "^2.25.4"
   },
   "name": "@iwann/punkbeer",
   "private": true,
