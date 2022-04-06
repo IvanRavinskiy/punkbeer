@@ -7,6 +7,7 @@
     "install-pods": "npx pod-install",
     "ios": "react-native run-ios",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "yarn run install-pods",
     "start": "react-native start",
     "test": "jest"
   },
