@@ -19,6 +19,7 @@
   "scripts": {
     "bootstrap": "npx lerna clean --yes && npx rimraf node_modules && npx lerna bootstrap",
     "start-mobile-android": "npx lerna run --scope @iwann/mobile android",
+    "start-mobile-ios": "npx lerna run --scope @iwann/mobile ios",
     "start-mobile-server": "cp .env apps/mobile && npx lerna run --scope @iwann/mobile start",
     "start-web": "npx lerna run --scope @iwann/web start"
   }
