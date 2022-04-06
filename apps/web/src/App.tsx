@@ -1,19 +1,19 @@
 import { greeting } from "@iwann/greeting";
 import { createAPI } from "@iwann/api";
 import { AppRootStateType } from "@iwann/store";
+import {decrease, increase} from "@iwann/store/src/appReducer";
+import {useAppSelector, useAppDispatch} from "@iwann/store/src/hooks";
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import {useDispatch, useSelector} from "react-redux";
-import {decrease, increase} from "@iwann/store/src/appReducer";
 
 
 function App() {
 
     console.log(createAPI(`${process.env.REACT_APP_BASE_URL}`).getBeerRandom.then(res => res.data))
 
-    const value = useSelector((state: AppRootStateType) => state.app.value)
-    const dispatch = useDispatch()
+    const value = useAppSelector((state: AppRootStateType) => state.app.value)
+    const dispatch = useAppDispatch()
 
     const onIncreaseClick = () => {
         dispatch(increase(value))
