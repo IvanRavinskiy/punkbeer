@@ -1,8 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
+import { store } from "./store";
 
 export const ProvideredStore = (props) => {
-  const { children, store } = props;
-
-  return <Provider store={store}>{children}</Provider>;
+  return <Provider store={store}>{props.children}</Provider>;
 };
