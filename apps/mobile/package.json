@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "npx react-native run-android --verbose",
     "install-pods": "npx pod-install",
-    "ios": "react-native run-ios",
+    "ios": "npx react-native run-ios --verbose",
+    "ios-small": "npx react-native run-ios --configuration Debug --simulator='iPhone SE (3rd generation)' --verbose",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "postinstall": "yarn run install-pods",
-    "start": "react-native start",
+    "start": "npx react-native start --verbose",
     "test": "jest"
   },
   "dependencies": {
