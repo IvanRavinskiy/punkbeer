@@ -17,10 +17,11 @@
     ]
   },
   "scripts": {
-    "bootstrap": "npx lerna clean --yes && npx rimraf node_modules && npx lerna bootstrap",
-    "start-mobile-android": "npx lerna run --scope @iwann/mobile android",
-    "start-mobile-ios": "npx lerna run --scope @iwann/mobile ios",
-    "start-mobile-server": "cp .env apps/mobile && npx lerna run --scope @iwann/mobile start",
-    "start-web": "npx lerna run --scope @iwann/web start"
+    "bootstrap": "npx lerna clean --yes && rm -rf node_modules && npx lerna bootstrap",
+    "start-mobile-android": "npx lerna run --scope @iwann/mobile --stream android",
+    "start-mobile-ios": "npx lerna run --scope @iwann/mobile --stream ios",
+    "start-mobile-ios-small": "npx lerna run --scope @iwann/mobile --stream ios-small",
+    "start-mobile-server": "cp .env apps/mobile && npx lerna run --scope @iwann/mobile --stream start",
+    "start-web": "npx lerna run --scope @iwann/web --stream start"
   }
 }
