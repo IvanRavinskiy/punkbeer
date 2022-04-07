@@ -8,12 +8,6 @@
     "packages": [
       "apps/*",
       "components/*"
-    ],
-    "nohoist": [
-      "**/react-native",
-      "**/react-native/**",
-      "**/react-native-typescript-transformer",
-      "**/react-native-config"
     ]
   },
   "scripts": {
