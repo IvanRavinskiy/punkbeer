@@ -10,4 +10,5 @@ export const ReduxProvider = (App: ComponentType, store: Store) => {
     </Provider>
   );
 };
+//@ts-ignore
 window.React1 = React;
