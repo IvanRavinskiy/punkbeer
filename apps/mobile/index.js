@@ -2,16 +2,16 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
-import {ProvideredStore} from "@iwann/store/src/provideredStore";
 import React from 'react';
 
-const RNRedux = () => (
-    <ProvideredStore>
-        <App />
-    </ProvideredStore>
-)
+import {AppRegistry} from 'react-native';
 
-AppRegistry.registerComponent(appName, () => RNRedux);
+import {ReduxProvider, store} from '@iwann/store';
+
+import {App} from './App';
+import {name as appName} from './app.json';
+
+window.React2 = React;
+console.log('### is the same react?', window.React1 === window.React2);
+
+AppRegistry.registerComponent(appName, () => ReduxProvider(App, store));
