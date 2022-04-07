@@ -12,6 +12,8 @@
   },
   "scripts": {
     "bootstrap": "npx lerna clean --yes && rm -rf node_modules && npx lerna bootstrap",
+    "mobile-open-android-studio": "npx lerna run --scope @iwann/mobile --stream open-android-studio",
+    "mobile-open-xcode": "npx lerna run --scope @iwann/mobile --stream open-xcode",
     "start-mobile-android": "npx lerna run --scope @iwann/mobile --stream android",
     "start-mobile-ios": "npx lerna run --scope @iwann/mobile --stream ios",
     "start-mobile-ios-small": "npx lerna run --scope @iwann/mobile --stream ios-small",

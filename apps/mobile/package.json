@@ -8,6 +8,8 @@
     "ios": "npx react-native run-ios --verbose",
     "ios-small": "npx react-native run-ios --configuration Debug --simulator='iPhone SE (3rd generation)' --verbose",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "open-android-studio": "open -a /Applications/Android\\ Studio.app android",
+    "open-xcode": "xed -b ios",
     "postinstall": "yarn run install-pods",
     "start": "npx react-native start --verbose",
     "test": "jest"
