@@ -14,10 +14,10 @@
     "bootstrap": "npx lerna clean --yes && rm -rf node_modules && npx lerna bootstrap",
     "mobile-open-android-studio": "npx lerna run --scope @iwann/mobile --stream open-android-studio",
     "mobile-open-xcode": "npx lerna run --scope @iwann/mobile --stream open-xcode",
-    "start-mobile-android": "npx lerna run --scope @iwann/mobile --stream android",
-    "start-mobile-ios": "npx lerna run --scope @iwann/mobile --stream ios",
-    "start-mobile-ios-small": "npx lerna run --scope @iwann/mobile --stream ios-small",
-    "start-mobile-server": "cp .env apps/mobile && npx lerna run --scope @iwann/mobile --stream start",
-    "start-web": "npx lerna run --scope @iwann/web --stream start"
+    "mobile-start-android": "npx lerna run --scope @iwann/mobile --stream android",
+    "mobile-start-ios": "npx lerna run --scope @iwann/mobile --stream ios",
+    "mobile-start-ios-small": "npx lerna run --scope @iwann/mobile --stream ios-small",
+    "mobile-start-server": "cp .env apps/mobile && npx lerna run --scope @iwann/mobile --stream start",
+    "web-start": "npx lerna run --scope @iwann/web --stream start"
   }
 }
