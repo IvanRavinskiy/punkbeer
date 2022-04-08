@@ -1,22 +1,43 @@
+import { BeerType } from "@iwann/api";
 import {createSlice} from "@reduxjs/toolkit";
+
+type initialStateType = {
+    value: number,
+    beers: BeerType[],
+    isLoading: boolean,
+}
+
+const initialState: initialStateType = {
+    value: 0,
+    beers:[],
+    isLoading: false
+}
 
 const appReducer = createSlice({
     name: 'appReducer',
-    initialState: {
-        value: 0,
-    },
+    initialState,
     reducers: {
-        increase: function (state, action) {
+        getBeerFetch: (state)=>{
+            state.isLoading = true
+        },
+        getBeerSuccess:(state, action)=>{
+            state.beers = action.payload
+            state.isLoading = false
+        },
+        getBeerFail: (state)=>{
+            state.isLoading = false
+        },
+        increase: (state, action) => {
         state.value = action.payload + 1
     },
-        decrease: function (state, action) {
+        decrease: (state, action) => {
             state.value = action.payload - 1
         },
     }
 })
 
 export default appReducer.reducer
-export const {increase, decrease} = appReducer.actions
+export const {getBeerFetch, getBeerSuccess, getBeerFail, increase, decrease} = appReducer.actions
 
 // type InitialStateType = {
 //     value: number,

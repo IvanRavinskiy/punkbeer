@@ -1,8 +1,8 @@
 const path = require("path");
 const { getLoader, loaderByName } = require("@craco/craco");
 
-require('dotenv').config({
-    path: path.join(process.cwd(), '..', '..', '.env'),
+require("dotenv").config({
+    path: path.join(process.cwd(), "..", "..", ".env")
 });
 
 module.exports = process.env;

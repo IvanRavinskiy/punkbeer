@@ -1,35 +1,48 @@
 import { greeting } from "@iwann/greeting";
-import { createAPI } from "@iwann/api";
 import { AppRootStateType } from "@iwann/store";
-import {decrease, increase} from "@iwann/store/src/appReducer";
-import {useAppSelector, useAppDispatch} from "@iwann/store/src/hooks";
+import { decrease, getBeerFetch, increase } from "@iwann/store/src/appReducer";
+import { useAppDispatch, useAppSelector } from "@iwann/store/src/hooks";
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 
 function App() {
 
-    console.log(createAPI(`${process.env.REACT_APP_BASE_URL}`).getBeerRandom.then(res => res.data))
+    const value = useAppSelector((state: AppRootStateType) => state.app.value);
+    const beers = useAppSelector((state: AppRootStateType) => state.app.beers);
+    const dispatch = useAppDispatch();
 
-    const value = useAppSelector((state: AppRootStateType) => state.app.value)
-    const dispatch = useAppDispatch()
-
+    const onGetBeerHandler = () => {
+        dispatch(getBeerFetch());
+    };
     const onIncreaseClick = () => {
-        dispatch(increase(value))
-    }
+        dispatch(increase(value));
+    };
     const onDecreaseClick = () => {
-        dispatch(decrease(value))
-    }
+        dispatch(decrease(value));
+    };
     return (
         <div className="App">
             <header className="App-header">
-                <img src={ logo } className="App-logo" alt="logo"/>
                 { greeting() }
                 <div>
-                    value: {value}
-                    <button onClick={onIncreaseClick}>+</button>
-                    <button onClick={onDecreaseClick}>-</button>
+                    <h2>RANDOM BEER</h2>
+                    {
+                        beers.map((beer)=>{
+                            return (
+                                <div key={ beer.id }>
+                                    <div>Beer title: { beer.name }</div>
+                                    <img alt={'beer pic'} style={ { "width": "50px" } } src={ beer.image_url }/>
+                                </div>
+                            );
+                        })
+                    }
+                    <button onClick={ onGetBeerHandler }>get random beer</button>
+                </div>
+                <div>
+                    value: { value }
+                    <button onClick={ onIncreaseClick }>+</button>
+                    <button onClick={ onDecreaseClick }>-</button>
                 </div>
             </header>
         </div>

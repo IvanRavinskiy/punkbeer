@@ -15,7 +15,7 @@ export const createAPI = (baseURL: string) => {
 
 type NullableType<T> = T | null
 
-type BeerType = {
+export type BeerType = {
     id: number,
     name: string,
     tagline: string,

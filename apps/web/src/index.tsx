@@ -1,8 +1,8 @@
+import { ProvideredStore } from "@iwann/store";
 import React from "react";
 
 import ReactDOM from "react-dom";
 
-import { ProvideredStore } from "@iwann/store";
 
 import "./index.css";
 import App from "./App";
