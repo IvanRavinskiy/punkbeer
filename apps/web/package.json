@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.4.3",
     "@iwann/api": "0.1.0",
     "@iwann/greeting": "0.1.0",
     "@testing-library/jest-dom": "^5.16.3",
@@ -13,6 +14,7 @@
     "@types/react": "^17.0.42",
     "@types/react-dom": "^17.0.14",
     "@types/react-redux": "^7.1.23",
+    "craco": "^0.0.3",
     "dotenv": "^16.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

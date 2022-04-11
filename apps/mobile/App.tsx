@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {greeting} from '@iwann/greeting';
-import Config from "react-native-config";
+import Config from 'react-native-config';
 
 const App = () => {
   return (
