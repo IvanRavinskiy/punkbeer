@@ -24,7 +24,7 @@ const appReducer = createSlice({
             state.beers = action.payload
             state.isLoading = false
         },
-        getBeerFail: (state)=>{
+        getBeerFinally: (state)=>{
             state.isLoading = false
         },
         increase: (state, action) => {
@@ -37,7 +37,7 @@ const appReducer = createSlice({
 })
 
 export default appReducer.reducer
-export const {getBeerFetch, getBeerSuccess, getBeerFail, increase, decrease} = appReducer.actions
+export const {getBeerFetch, getBeerSuccess, getBeerFinally, increase, decrease} = appReducer.actions
 
 // type InitialStateType = {
 //     value: number,

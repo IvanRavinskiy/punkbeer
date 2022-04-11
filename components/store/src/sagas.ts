@@ -1,6 +1,6 @@
 import {takeEvery, call, put} from "redux-saga/effects"
 import {BeerType, createAPI} from "@iwann/api";
-import {getBeerSuccess} from "./appReducer";
+import {getBeerFinally, getBeerSuccess} from "./appReducer";
 
 const api = createAPI(`https://api.punkapi.com/v2/`)
 
@@ -9,7 +9,6 @@ export function* RootSaga(){
 }
 
 function* workGetBeerFetch(api: any): any {
-    console.log(api)
     try {
         const res = yield call(api.getBeerRandom)
         const beers: BeerType[] = res.data
@@ -17,5 +16,8 @@ function* workGetBeerFetch(api: any): any {
     }
     catch {
         console.log('ERROR workGetBeerFetch')
+    }
+    finally {
+        yield put(getBeerFinally)
     }
 }
