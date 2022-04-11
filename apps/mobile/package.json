@@ -8,6 +8,7 @@
     "ios": "npx react-native run-ios --verbose",
     "ios-small": "npx react-native run-ios --configuration Debug --simulator='iPhone SE (3rd generation)' --verbose",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "yarn run lint --fix",
     "open-android-studio": "open -a /Applications/Android\\ Studio.app android",
     "open-xcode": "xed -b ios",
     "postinstall": "yarn run install-pods",
@@ -15,6 +16,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@iwann/api": "0.1.0",
     "@iwann/greeting": "0.1.0",
     "@iwann/store": "0.1.0",
     "react": "17.0.2",
