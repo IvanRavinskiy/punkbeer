@@ -1,6 +1,17 @@
 {
   "dependencies": {
-    "eslint-plugin-import": "^2.25.4"
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "lerna": "^4.0.0",
+    "prettier": "^2.6.2",
+    "prettier-eslint": "^13.0.0"
   },
   "name": "@iwann/punkbeer",
   "private": true,
@@ -11,7 +22,9 @@
     ]
   },
   "scripts": {
-    "bootstrap": "npx lerna clean --yes && rm -rf node_modules && npx lerna bootstrap",
+    "bootstrap": "npx lerna clean --yes && npx rimraf node_modules && npx lerna bootstrap",
+    "husky-prepare": "husky install",
+    "fix": "npx eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
     "mobile-open-android-studio": "npx lerna run --scope @iwann/mobile --stream open-android-studio",
     "mobile-open-xcode": "npx lerna run --scope @iwann/mobile --stream open-xcode",
     "mobile-start-android": "npx lerna run --scope @iwann/mobile --stream android",

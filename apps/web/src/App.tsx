@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from "@iwann/store/src/hooks";
 import React from "react";
 import "./App.css";
 
-
 function App() {
 
     const value = useAppSelector((state: AppRootStateType) => state.app.value);
