@@ -28,28 +28,25 @@ export const App = () => {
   const onDecreasePress = () => {
     dispatch(decrease(value));
   };
+
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        {beers.map((beer: BeerType) => {
-            console.log(beer.image_url)
-            return (
-                <View>
-                    <Image style={{width: 150, height: 350}} source={{uri: `${beer.image_url}`}} />
-                    <Text>Beer title: {beer.name}</Text>
-                </View>
-            );
-        })}
-      <Button title={'get beer!!!!'} onPress={onGetBeerHandler}>
-        {'get beer'}
-      </Button>
+      {beers.map((beer: BeerType) => {
+        return (
+          <View key={beer.id}>
+            <Image
+              style={{width: 150, height: 350}}
+              source={{uri: `${beer.image_url}`}}
+            />
+            <Text>Beer title: {beer.name}</Text>
+          </View>
+        );
+      })}
+      <Button title={'get beer!!!!'} onPress={() => onGetBeerHandler()} />
       <Text>value: {value}</Text>
-      <Button title={'increase'} onPress={onIncreasePress}>
-        {'+'}
-      </Button>
-      <Button title={'decrease'} onPress={onDecreasePress}>
-        {'-'}
-      </Button>
-      <Text>{'LALALALALA'}</Text>
+      <Button title="increase" onPress={onIncreasePress} />
+      <Button title="decrease" onPress={onDecreasePress} />
+      <Text>LALALALALA</Text>
       <Text>{`${Config.REACT_APP_BASE_URL}`}</Text>
       <Text>{greeting()}</Text>
     </View>

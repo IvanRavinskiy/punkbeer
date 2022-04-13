@@ -1,14 +1,12 @@
-import React, { ComponentType } from "react";
+import * as React from 'react';
 
-import { Provider } from "react-redux";
-import { Store } from "redux";
+import { Provider } from 'react-redux';
+import type { Store } from 'redux';
 
-export const ReduxProvider = (App: ComponentType, store: Store) => {
+export const ReduxProvider = (App: any, store: Store) => {
   return () => (
     <Provider store={store}>
       <App />
     </Provider>
   );
 };
-//@ts-ignore
-window.React1 = React;

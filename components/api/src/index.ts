@@ -1,20 +1,8 @@
-import axios from "axios";
-
-export const createAPI = (baseURL: string) => {
-
-    const instance = axios.create({
-        baseURL
-    })
-
-    const getBeer = () => instance.get<BeerType[]>('beers')
-    const getBeerRandom = () => instance.get<BeerType[]>('beers/random')
-
-  return { getBeer, getBeerRandom };
-};
+import axios from 'axios';
 
 type NullableType<T> = T | null;
 
-type BeerType = {
+export type BeerType = {
   id: number;
   name: string;
   tagline: string;
@@ -117,4 +105,15 @@ type BeerType = {
   food_pairing: NullableType<string[]>;
   brewers_tips: NullableType<string>;
   contributed_by: string;
+};
+
+export const createAPI = (baseURL: string) => {
+  const instance = axios.create({
+    baseURL,
+  });
+
+  const getBeer = () => instance.get<BeerType[]>('beers');
+  const getBeerRandom = () => instance.get<BeerType[]>('beers/random');
+
+  return { getBeer, getBeerRandom };
 };

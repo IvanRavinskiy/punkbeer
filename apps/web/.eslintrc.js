@@ -1,6 +1,5 @@
 module.exports = {
-  extends: [],
-  plugins: [],
+  extends: ["../../.eslintrc.js"],
   overrides: [
     {
       files: ["*.ts", "*.tsx"],
