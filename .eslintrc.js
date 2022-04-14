@@ -5,11 +5,10 @@ module.exports = {
     browser: true,
     jest: true,
     commonjs: true,
-    es2022: true,
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2018,
     sourceType: 'module',
   },
   plugins: ['react', 'prettier'],

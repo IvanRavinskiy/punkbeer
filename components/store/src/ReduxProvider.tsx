@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Provider } from 'react-redux';
-import type { Store } from 'redux';
+import { Store } from 'redux';
 
 export const ReduxProvider = (App: any, store: Store) => {
   return () => (

@@ -2,22 +2,41 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import appReducer from './appReducer';
 import { RootSaga } from './sagas';
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  persistStore,
+} from 'redux-persist';
 
 const rootReducer = combineReducers({
   app: appReducer,
 });
-export const createGlobalStore = () => {
+export type AppRootStateType = ReturnType<typeof rootReducer>;
+
+export const createGlobalStore = (PersistStorage: any) => {
+  const persistConfig = { key: 'root', storage: PersistStorage };
   const sagaMiddleware = createSagaMiddleware();
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
 
   const store = configureStore({
-    reducer: rootReducer,
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
-        serializableCheck: false,
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
         thunk: false,
       }).concat(sagaMiddleware),
   });
 
   sagaMiddleware.run(RootSaga);
-  return { store };
+
+  const persistor = persistStore(store);
+
+  return { store, persistor };
 };

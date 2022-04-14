@@ -28,6 +28,8 @@ const appReducer = createSlice({
       state.isLoading = false;
     },
     increase: (state, action) => {
+      console.log(action);
+
       state.value = action.payload + 1;
     },
     decrease: (state, action) => {
