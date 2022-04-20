@@ -12,10 +12,10 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@iwann/store';
-import {greeting} from '@iwann/greeting';
 import {BeerType} from '@iwann/api';
 
 export const App = () => {
+  const {REACT_APP_BASE_URL} = Config;
   const beers = useAppSelector((state: AppRootStateType) => state.app.beers);
   const value = useAppSelector((state: AppRootStateType) => state.app.value);
   const dispatch = useAppDispatch();
@@ -46,9 +46,7 @@ export const App = () => {
       <Text>value: {value}</Text>
       <Button title="increase" onPress={onIncreasePress} />
       <Button title="decrease" onPress={onDecreasePress} />
-      <Text>LALALALALA</Text>
-      <Text>{`${Config.REACT_APP_BASE_URL}`}</Text>
-      <Text>{greeting()}</Text>
+      <Text>{`${REACT_APP_BASE_URL}`}</Text>
     </View>
   );
 };
