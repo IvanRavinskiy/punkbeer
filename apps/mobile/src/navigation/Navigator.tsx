@@ -4,6 +4,7 @@ import {TabStack} from './TabStack';
 
 export type RootStackParamList = {
   HomeScreen: undefined;
+  RandomScreen: undefined;
   SearchScreen: undefined;
   TabStack: undefined;
 };

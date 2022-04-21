@@ -3,6 +3,7 @@ import {HomeScreen} from '../screens/HomeScreen';
 import {RandomScreen} from '../screens/RandomScreen';
 import React from 'react';
 import {SvgBeerRN} from '../assets/svg/SvgBeerRN';
+import {SearchScreen} from '../screens/SearchScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,10 +24,20 @@ export const TabStack = () => {
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="Random"
         component={RandomScreen}
         options={{
           tabBarLabel: 'Random beer',
+          tabBarIcon: ({focused}) => (
+            <SvgBeerRN color={focused ? 'red' : 'blue'} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          tabBarLabel: 'Search beer',
           tabBarIcon: ({focused}) => (
             <SvgBeerRN color={focused ? 'red' : 'blue'} />
           ),
