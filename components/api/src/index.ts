@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 type NullableType<T> = T | null;
 
@@ -107,7 +107,7 @@ export type BeerType = {
   contributed_by: string;
 };
 
-export const createAPI = (baseURL: string) => {
+export const createAPI = (baseURL: AxiosRequestConfig['baseURL']) => {
   const instance = axios.create({
     baseURL,
   });
