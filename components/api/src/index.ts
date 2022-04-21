@@ -2,6 +2,8 @@ import axios, { AxiosRequestConfig } from 'axios';
 
 type NullableType<T> = T | null;
 
+export type { AxiosResponse, AxiosError } from 'axios';
+
 export type BeerType = {
   id: number;
   name: string;
@@ -106,6 +108,13 @@ export type BeerType = {
   brewers_tips: NullableType<string>;
   contributed_by: string;
 };
+export type ErrorType = {
+  statusCode: number;
+  error: 'Not Found' | string;
+  message: string;
+};
+export type CreateAPI = typeof createAPI;
+export type API = ReturnType<CreateAPI>;
 
 export const createAPI = (baseURL: AxiosRequestConfig['baseURL'] = '') => {
   const instance = axios.create({
