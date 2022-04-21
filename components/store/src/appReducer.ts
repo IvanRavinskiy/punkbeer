@@ -5,12 +5,14 @@ type initialStateType = {
   beers: BeerType[];
   beerRandom: BeerType[];
   isLoading: boolean;
+  error: null;
 };
 
 const initialState: initialStateType = {
   beers: [],
   beerRandom: [],
   isLoading: false,
+  error: null,
 };
 
 const appReducer = createSlice({
@@ -27,13 +29,15 @@ const appReducer = createSlice({
     getBeerFetch: (state) => {
       state.isLoading = true;
     },
+    getBeerError: (state, action) => {
+      state.error = action.payload;
+    },
     getBeerSuccess: (state, action) => {
       state.beerRandom = action.payload;
+    },
+    getBeerFinally: (state) => {
       state.isLoading = false;
     },
-    // getBeerFinally: (state) => {
-    //   state.isLoading = false;
-    // },
   },
 });
 
@@ -43,4 +47,6 @@ export const {
   getBeerAllFetch,
   getBeerFetch,
   getBeerSuccess,
+  getBeerFinally,
+  getBeerError,
 } = appReducer.actions;
