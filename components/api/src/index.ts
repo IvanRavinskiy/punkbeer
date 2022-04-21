@@ -107,7 +107,7 @@ export type BeerType = {
   contributed_by: string;
 };
 
-export const createAPI = (baseURL: AxiosRequestConfig['baseURL']) => {
+export const createAPI = (baseURL: AxiosRequestConfig['baseURL'] = '') => {
   const instance = axios.create({
     baseURL,
   });
