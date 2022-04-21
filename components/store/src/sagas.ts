@@ -2,7 +2,7 @@ import { takeEvery, call, put } from 'redux-saga/effects';
 import { BeerType, createAPI } from '@iwann/api';
 import { getBeersAllSuccess, getBeerSuccess } from './appReducer';
 
-const api = createAPI(`https://api.punkapi.com/v2/`);
+const api = createAPI(process.env.REACT_APP_BASE_URL);
 
 function* workGetBeerFetch(apiProp: any): any {
   try {
