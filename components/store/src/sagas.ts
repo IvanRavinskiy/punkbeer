@@ -1,28 +1,27 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { BeerType, createAPI } from '@iwann/api';
+import { API, AxiosResponse, BeerType, createAPI } from '@iwann/api';
 import { getBeersAllSuccess, getBeerSuccess } from './appReducer';
 
 const api = createAPI(process.env.REACT_APP_BASE_URL);
 
-function* workGetBeerFetch(apiProp: any): any {
+function* workGetBeerFetch(apiProp: API) {
   try {
-    const res = yield call(apiProp.getBeerRandom);
-    const beers: BeerType[] = res.data;
-    yield put(getBeerSuccess(beers));
+    const res: AxiosResponse<BeerType[]> = yield call(apiProp.getBeerRandom);
+    yield put(getBeerSuccess(res.data));
   } catch {
-    console.log('ERROR workGetBeerFetch');
+    yield call(console.log, 'ERROR workGetBeerFetch');
   }
   // finally {
   //     yield put(getBeerFinally)
   // }
 }
-function* getBeersAll(apiProp: any): any {
+function* getBeersAll(apiProp: API) {
   try {
-    const res = yield call(apiProp.getBeer);
+    const res: AxiosResponse<BeerType[]> = yield call(apiProp.getBeer);
     const beers: BeerType[] = res.data;
     yield put(getBeersAllSuccess(beers));
   } catch {
-    console.log('ERROR workGetBeerFetch');
+    yield call(console.log, 'ERROR workGetBeerFetch');
   }
   // finally {
   //     yield put(getBeerFinally)
