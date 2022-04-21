@@ -12,14 +12,18 @@ import {
   REGISTER,
   persistStore,
 } from 'redux-persist';
+import type { PersistConfig, Storage } from 'redux-persist';
 
 const rootReducer = combineReducers({
   app: appReducer,
 });
 export type AppRootStateType = ReturnType<typeof rootReducer>;
 
-export const createGlobalStore = (PersistStorage: any) => {
-  const persistConfig = { key: 'root', storage: PersistStorage };
+export const createGlobalStore = (PersistStorage: Storage) => {
+  const persistConfig: PersistConfig<AppRootStateType> = {
+    key: 'root',
+    storage: PersistStorage,
+  };
   const sagaMiddleware = createSagaMiddleware();
   const persistedReducer = persistReducer(persistConfig, rootReducer);
 
