@@ -1,7 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomeScreen} from '../screens/HomeScreen';
-import {SearchScreen} from '../screens/SearchScreen';
+import {RandomScreen} from '../screens/RandomScreen';
 import React from 'react';
+import {SvgBeerRN} from '../assets/svg/SvgBeerRN';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,28 +15,22 @@ export const TabStack = () => {
       <Tab.Screen
         name="Home"
         component={HomeScreen}
-        // options={{
-        //   tabBarLabel: 'Home',
-        //   tabBarIcon: ({focused}) => (
-        //     <SvgProfile
-        //       color={focused ? 'red' : 'blue'}
-        //       viewBox={'0 0 50 50'}
-        //     />
-        //   ),
-        // }}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({focused}) => (
+            <SvgBeerRN color={focused ? 'red' : 'blue'} />
+          ),
+        }}
       />
       <Tab.Screen
         name="Search"
-        component={SearchScreen}
-        // options={{
-        //   tabBarLabel: 'Notes',
-        //   tabBarIcon: ({focused}) => (
-        //     <SvgProfile
-        //       color={focused ? 'red' : 'blue'}
-        //       viewBox={'0 0 50 50'}
-        //     />
-        //   ),
-        // }}
+        component={RandomScreen}
+        options={{
+          tabBarLabel: 'Random beer',
+          tabBarIcon: ({focused}) => (
+            <SvgBeerRN color={focused ? 'red' : 'blue'} />
+          ),
+        }}
       />
     </Tab.Navigator>
   );
