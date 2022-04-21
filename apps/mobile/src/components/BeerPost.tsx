@@ -1,23 +1,37 @@
-import React from 'react';
-import {Image, StyleSheet, Text} from 'react-native';
+import {
+  AppRootStateType,
+  getBeerAllFetch,
+  useAppDispatch,
+  useAppSelector,
+} from '@iwann/store';
+import React, {useEffect} from 'react';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import {BeerType} from '@iwann/api';
 
 export const BeerPost = () => {
+  const beers = useAppSelector((state: AppRootStateType) => state.app.beers);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getBeerAllFetch());
+  }, [dispatch]);
+
   return (
     <>
-      <Text>BEER NAME_ ALIVARIA</Text>
-      <Image
-        style={styles.image}
-        source={{
-          uri: 'https://alivaria.by/media/13351/by_alivaria-1894-premium.png',
-        }}
-      />
-      <Text>
-        Description: kjdnkjsd nf ksfdn ksdnf ksd fksdn fksd ks kfsndk fskf
-        nskfksdfksdf ksnfksd sdkfnksdfn k df ks kjdnkjsd nf ksfdn ksdnf ksd
-        fksdn fksd ks kfsndk fskf nskfksdfksdf ksnfksd sdkfnksdfn k df ks
-        kjdnkjsd nf ksfdn ksdnf ksd fksdn fksd ks kfsndk fskf nskfksdfksdf
-        ksnfksd sdkfnksdfn k df ks
-      </Text>
+      {beers.map((beer: BeerType) => {
+        return (
+          <View key={beer.id}>
+            <Text>{beer.name}</Text>
+            <Image
+              style={styles.image}
+              source={{
+                uri: `${beer.image_url}`,
+              }}
+            />
+            <Text>Description: {beer.description}</Text>
+          </View>
+        );
+      })}
     </>
   );
 };
