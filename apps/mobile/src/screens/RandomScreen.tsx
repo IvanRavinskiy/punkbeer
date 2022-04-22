@@ -9,7 +9,7 @@ import {
 import {BeerType} from '@iwann/api';
 
 export const RandomScreen = () => {
-  const currentBeer = useAppSelector(
+  const currentRandomBeer = useAppSelector(
     (state: AppRootStateType) => state.app.beerRandom,
   );
   const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ export const RandomScreen = () => {
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      {currentBeer.map((beer: BeerType) => {
+      {currentRandomBeer.map((beer: BeerType) => {
         return (
           <View key={beer.id}>
             <Image
