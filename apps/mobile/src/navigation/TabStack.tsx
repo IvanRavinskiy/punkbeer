@@ -14,6 +14,16 @@ export const TabStack = () => {
         headerShown: false,
       }}>
       <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          tabBarLabel: 'Search beer',
+          tabBarIcon: ({focused}) => (
+            <SvgBeerRN color={focused ? 'red' : 'blue'} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
@@ -28,16 +38,6 @@ export const TabStack = () => {
         component={RandomScreen}
         options={{
           tabBarLabel: 'Random beer',
-          tabBarIcon: ({focused}) => (
-            <SvgBeerRN color={focused ? 'red' : 'blue'} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Search"
-        component={SearchScreen}
-        options={{
-          tabBarLabel: 'Search beer',
           tabBarIcon: ({focused}) => (
             <SvgBeerRN color={focused ? 'red' : 'blue'} />
           ),
