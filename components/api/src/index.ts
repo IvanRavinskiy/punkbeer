@@ -122,7 +122,9 @@ export const createAPI = (baseURL: AxiosRequestConfig['baseURL'] = '') => {
   });
 
   const getBeer = () => instance.get<BeerType[]>('beers');
+  const getBeerSort = (value: number[]) =>
+    instance.get<BeerType[]>(`beers?abv_gt=${value[0]}&abv_lt=${value[1]}`);
   const getBeerRandom = () => instance.get<BeerType[]>('beers/random');
 
-  return { getBeer, getBeerRandom };
+  return { getBeerSort, getBeer, getBeerRandom };
 };
