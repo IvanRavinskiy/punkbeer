@@ -6,6 +6,7 @@ export type RootStackParamList = {
   HomeScreen: undefined;
   RandomScreen: undefined;
   SearchScreen: undefined;
+  MapScreen: undefined;
   TabStack: undefined;
 };
 

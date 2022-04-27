@@ -4,6 +4,7 @@ import {RandomScreen} from '../screens/RandomScreen';
 import React from 'react';
 import {SvgBeerRN} from '../assets/svg/SvgBeerRN';
 import {SearchScreen} from '../screens/SearchScreen';
+import {MapScreen} from '../screens/MapScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,6 +14,16 @@ export const TabStack = () => {
       screenOptions={{
         headerShown: false,
       }}>
+      <Tab.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          tabBarLabel: 'Google map',
+          tabBarIcon: ({focused}) => (
+            <SvgBeerRN color={focused ? 'red' : 'blue'} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Search"
         component={SearchScreen}
