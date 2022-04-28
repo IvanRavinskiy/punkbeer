@@ -7,6 +7,7 @@ import {
   initialStateType,
 } from './appReducer';
 import { SelectAlcohol } from './selectors/SelectAlcohol';
+import { SagaPattern } from './enums/SagaPattern';
 
 // const api = createAPI(process.env.REACT_APP_BASE_URL); //DONT WORK IN MOBILE, ONLY WEB
 const api = createAPI('https://api.punkapi.com/v2/');
@@ -50,7 +51,7 @@ function* getBeersSort(apiProp: API) {
 }
 
 export function* RootSaga() {
-  yield takeEvery('appReducer/getBeerFetch', workGetBeerFetch, api);
-  yield takeEvery('appReducer/getBeerAllFetch', getBeersAll, api);
-  yield takeEvery('appReducer/getBeersSortFetch', getBeersSort, api);
+  yield takeEvery(SagaPattern.GetBeer, workGetBeerFetch, api);
+  yield takeEvery(SagaPattern.GetBeerALl, getBeersAll, api);
+  yield takeEvery(SagaPattern.GetBeerSort, getBeersSort, api);
 }
