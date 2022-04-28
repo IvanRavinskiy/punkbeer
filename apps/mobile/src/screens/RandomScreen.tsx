@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image, Text, View} from 'react-native';
+import {Button, Image, StyleSheet, Text, View} from 'react-native';
 import {
   AppRootStateType,
   getBeerFetch,
@@ -19,15 +19,15 @@ export const RandomScreen = () => {
   };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      {currentRandomBeer.map((beer: BeerType) => {
+    <View style={styles.container}>
+      {currentRandomBeer.map(({id, image_url, name}: BeerType) => {
         return (
-          <View key={beer.id}>
+          <View key={id}>
             <Image
               style={{width: 150, height: 600}}
-              source={{uri: `${beer.image_url}`}}
+              source={{uri: `${image_url}`}}
             />
-            <Text>Beer title: {beer.name}</Text>
+            <Text>Beer title: {name}</Text>
           </View>
         );
       })}
@@ -35,3 +35,11 @@ export const RandomScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
