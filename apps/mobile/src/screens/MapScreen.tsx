@@ -1,9 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-export const MapScreen = () => {
+type MapPropsType = {
+  lat: number;
+  lgt: number;
+};
+
+export const MapScreen = ({
+  lat = 25.761681,
+  lgt = -80.191788,
+}: MapPropsType) => {
   return (
     <SafeAreaView style={styles.container}>
       <MapView
@@ -13,8 +21,8 @@ export const MapScreen = () => {
         showsUserLocation={true}
         style={styles.map}
         initialRegion={{
-          latitude: 53.893009,
-          longitude: 27.567444,
+          latitude: lat,
+          longitude: lgt,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}

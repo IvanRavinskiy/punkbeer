@@ -1,6 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TabStack} from './TabStack';
+import {MapContainer} from '../screens/MapContainer';
 
 export type RootStackParamList = {
   HomeScreen: undefined;
@@ -8,6 +9,11 @@ export type RootStackParamList = {
   SearchScreen: undefined;
   MapScreen: undefined;
   TabStack: undefined;
+  MapContainer: {
+    city: string;
+    lat: number;
+    lgt: number;
+  };
 };
 
 export const Navigator = () => {
@@ -19,6 +25,7 @@ export const Navigator = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="TabStack" component={TabStack} />
+      <Stack.Screen name="MapContainer" component={MapContainer} />
     </Stack.Navigator>
   );
 };
