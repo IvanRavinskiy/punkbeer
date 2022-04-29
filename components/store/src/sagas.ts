@@ -1,10 +1,10 @@
-import { takeEvery, call, put, select } from 'redux-saga/effects';
+import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { API, AxiosResponse, BeerType, createAPI } from '@iwann/api';
 import {
   getBeersAllSuccess,
   getBeersSortSuccess,
   getBeerSuccess,
-  initialStateType,
+  InitialStateType,
 } from './appReducer';
 import { SelectAlcohol } from './selectors/SelectAlcohol';
 import { SagaPattern } from './enums/SagaPattern';
@@ -19,9 +19,6 @@ function* workGetBeerFetch(apiProp: API) {
   } catch {
     yield call(console.log, 'ERROR workGetBeerFetch');
   }
-  // finally {
-  //     yield put(getBeerFinally)
-  // }
 }
 function* getBeersAll(apiProp: API) {
   try {
@@ -30,13 +27,10 @@ function* getBeersAll(apiProp: API) {
   } catch {
     yield call(console.log, 'ERROR getBeersAll');
   }
-  // finally {
-  //     yield put(getBeerFinally)
-  // }
 }
 function* getBeersSort(apiProp: API) {
   try {
-    const value: initialStateType['alcohol'] = yield select(SelectAlcohol);
+    const value: InitialStateType['alcohol'] = yield select(SelectAlcohol);
     const res: AxiosResponse<BeerType[]> = yield call(
       apiProp.getBeerSort,
       value,
@@ -45,13 +39,10 @@ function* getBeersSort(apiProp: API) {
   } catch {
     yield call(console.log, 'ERROR getBeersSort');
   }
-  // finally {
-  //     yield put(getBeerFinally)
-  // }
 }
 
 export function* RootSaga() {
-  yield takeEvery(SagaPattern.GetBeer, workGetBeerFetch, api);
-  yield takeEvery(SagaPattern.GetBeerALl, getBeersAll, api);
-  yield takeEvery(SagaPattern.GetBeerSort, getBeersSort, api);
+  yield takeLatest(SagaPattern.GetBeer, workGetBeerFetch, api);
+  yield takeLatest(SagaPattern.GetBeerALl, getBeersAll, api);
+  yield takeLatest(SagaPattern.GetBeerSort, getBeersSort, api);
 }
