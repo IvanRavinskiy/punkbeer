@@ -1,7 +1,7 @@
 import { BeerType } from '@iwann/api';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type initialStateType = {
+export type InitialStateType = {
   beers: BeerType[];
   beerRandom: BeerType[];
   isLoading: boolean;
@@ -10,7 +10,7 @@ export type initialStateType = {
   beersSort: BeerType[];
 };
 
-const initialState: initialStateType = {
+const initialState: InitialStateType = {
   beers: [],
   beerRandom: [],
   isLoading: false,
@@ -23,15 +23,24 @@ const appReducer = createSlice({
   name: 'appReducer',
   initialState,
   reducers: {
-    getBeersSortSuccess: (state, action) => {
+    getBeersSortSuccess: (
+      state,
+      action: PayloadAction<InitialStateType['beersSort']>,
+    ) => {
       state.beersSort = action.payload;
       state.isLoading = false;
     },
-    getBeersSortFetch: (state, action) => {
+    getBeersSortFetch: (
+      state,
+      action: PayloadAction<InitialStateType['alcohol']>,
+    ) => {
       state.isLoading = true;
       state.alcohol = action.payload;
     },
-    getBeersAllSuccess: (state, action) => {
+    getBeersAllSuccess: (
+      state,
+      action: PayloadAction<InitialStateType['beers']>,
+    ) => {
       state.beers = action.payload;
       state.isLoading = false;
     },
@@ -41,10 +50,13 @@ const appReducer = createSlice({
     getBeerFetch: (state) => {
       state.isLoading = true;
     },
-    getBeerError: (state, action) => {
+    getBeerError: (state, action: PayloadAction<InitialStateType['error']>) => {
       state.error = action.payload;
     },
-    getBeerSuccess: (state, action) => {
+    getBeerSuccess: (
+      state,
+      action: PayloadAction<InitialStateType['beerRandom']>,
+    ) => {
       state.beerRandom = action.payload;
     },
     getBeerFinally: (state) => {
