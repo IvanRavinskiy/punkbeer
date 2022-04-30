@@ -1,9 +1,12 @@
 module.exports = {
-  extends: ['../../.eslintrc.js'],
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      excludedFiles: ['*-test.tsx'],
-    },
-  ],
+  extends: ["../../.eslintrc.js"],
+  env: {
+    jest: true,
+  },
+  // overrides: [
+  //   {
+  //     files: ["*.ts", "*.tsx"],
+  //     excludedFiles: ["*-test.tsx"],
+  //   },
+  // ],
 };
