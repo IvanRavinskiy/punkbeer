@@ -1,20 +1,8 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { TabStack } from "./TabStack";
-import { MapContainer } from "../screens/MapContainer";
-
-export type RootStackParamList = {
-  HomeScreen: undefined;
-  RandomScreen: undefined;
-  SearchScreen: undefined;
-  MapScreen: undefined;
-  TabStack: undefined;
-  MapContainer: {
-    city: string;
-    lat: number;
-    lgt: number;
-  };
-};
+import { RootStackParamList } from "./types";
+import { MapContainer } from "../../screens/MapContainer";
+import { TabStack } from "../TabStack";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
