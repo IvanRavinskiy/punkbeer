@@ -3,6 +3,9 @@ module.exports = {
   env: {
     jest: true,
   },
+  rules: {
+    "no-unused-vars": 0,
+  },
   // overrides: [
   //   {
   //     files: ["*.ts", "*.tsx"],

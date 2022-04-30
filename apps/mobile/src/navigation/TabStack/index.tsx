@@ -1,12 +1,14 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeScreen } from "../screens/HomeScreen";
-import { RandomScreen } from "../screens/RandomScreen";
+import { HomeScreen } from "../../screens/HomeScreen";
+import { RandomScreen } from "../../screens/RandomScreen";
 import React from "react";
-import { SvgBeerRN } from "../assets/svg/SvgBeerRN";
-import { SearchScreen } from "../screens/SearchScreen";
-import { CitiesScreen } from "../screens/CitiesScreen";
+import { SvgBeerRN } from "../../assets/svg/SvgBeerRN";
+import { SearchScreen } from "../../screens/SearchScreen";
+import { CitiesScreen } from "../../screens/CitiesScreen";
+import type { TabNavigationParamList } from "./types";
+import { ScreenKey } from "../../enums";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<TabNavigationParamList>();
 
 export const TabStack = () => {
   return (
@@ -16,7 +18,7 @@ export const TabStack = () => {
       }}
     >
       <Tab.Screen
-        name="Cities"
+        name={ScreenKey.CitiesScreen}
         component={CitiesScreen}
         options={{
           tabBarLabel: "Cities",
@@ -26,7 +28,7 @@ export const TabStack = () => {
         }}
       />
       <Tab.Screen
-        name="Search"
+        name={ScreenKey.SearchBeerScreen}
         component={SearchScreen}
         options={{
           tabBarLabel: "Search beer",
@@ -36,7 +38,7 @@ export const TabStack = () => {
         }}
       />
       <Tab.Screen
-        name="Home"
+        name={ScreenKey.HomeScreen}
         component={HomeScreen}
         options={{
           tabBarLabel: "Home",
@@ -46,7 +48,7 @@ export const TabStack = () => {
         }}
       />
       <Tab.Screen
-        name="Random"
+        name={ScreenKey.RandomBeerScreen}
         component={RandomScreen}
         options={{
           tabBarLabel: "Random beer",

@@ -1,8 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { RootStackParamList } from "./types";
+import type { RootStackParamList } from "./types";
 import { MapContainer } from "../../screens/MapContainer";
 import { TabStack } from "../TabStack";
+import { ScreenKey } from "../../enums";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -13,8 +14,8 @@ export const Navigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="TabStack" component={TabStack} />
-      <Stack.Screen name="MapContainer" component={MapContainer} />
+      <Stack.Screen name={ScreenKey.TabStack} component={TabStack} />
+      <Stack.Screen name={ScreenKey.MapContainer} component={MapContainer} />
     </Stack.Navigator>
   );
 };
