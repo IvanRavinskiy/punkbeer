@@ -1,7 +1,7 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
-import appReducer from './appReducer';
-import { RootSaga } from './sagas';
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import appReducer from "./appReducer";
+import { RootSaga } from "./sagas";
 import {
   persistReducer,
   FLUSH,
@@ -11,8 +11,8 @@ import {
   PURGE,
   REGISTER,
   persistStore,
-} from 'redux-persist';
-import type { PersistConfig, Storage } from 'redux-persist';
+} from "redux-persist";
+import type { PersistConfig, Storage } from "redux-persist";
 
 const rootReducer = combineReducers({
   app: appReducer,
@@ -21,7 +21,7 @@ export type AppRootStateType = ReturnType<typeof rootReducer>;
 
 export const createGlobalStore = (PersistStorage: Storage) => {
   const persistConfig: PersistConfig<AppRootStateType> = {
-    key: 'root',
+    key: "root",
     storage: PersistStorage,
   };
   const sagaMiddleware = createSagaMiddleware();

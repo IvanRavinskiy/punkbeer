@@ -3,10 +3,10 @@ import {
   getBeerAllFetch,
   useAppDispatch,
   useAppSelector,
-} from '@iwann/store';
-import React, {useEffect} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {BeerType} from '@iwann/api';
+} from "@iwann/store";
+import React, { useEffect } from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { BeerType } from "@iwann/api";
 
 export const BeerPost = () => {
   const beers = useAppSelector((state: AppRootStateType) => state.app.beers);

@@ -1,2 +1,2 @@
-export { SelectRandomBeer } from './SelectRandomBeer';
-export { SelectAlcohol } from './SelectAlcohol';
+export { SelectRandomBeer } from "./SelectRandomBeer";
+export { SelectAlcohol } from "./SelectAlcohol";

@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import React, { useEffect, useState } from "react";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import {
   AppRootStateType,
   getBeersSortFetch,
   useAppDispatch,
   useAppSelector,
-} from '@iwann/store';
-import {BeerType} from '@iwann/api';
+} from "@iwann/store";
+import { BeerType } from "@iwann/api";
 
 export const SearchScreen = () => {
   const sortedBeers = useAppSelector(
-    (state: AppRootStateType) => state.app.beersSort,
+    (state: AppRootStateType) => state.app.beersSort
   );
   const dispatch = useAppDispatch();
   const [multiSliderValue, setMultiSliderValue] = useState([0, 100]);
@@ -41,10 +41,10 @@ export const SearchScreen = () => {
         minMarkerOverlapDistance={10}
         sliderLength={350}
         selectedStyle={{
-          backgroundColor: '#0095ff',
+          backgroundColor: "#0095ff",
         }}
         trackStyle={{
-          backgroundColor: '#ababab',
+          backgroundColor: "#ababab",
         }}
         touchDimensions={{
           height: 40,
@@ -78,10 +78,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   SliderValues: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingTop: 10,
   },
   image: {

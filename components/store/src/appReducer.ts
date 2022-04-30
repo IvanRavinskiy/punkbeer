@@ -23,24 +23,15 @@ const appReducer = createSlice({
   name: 'appReducer',
   initialState,
   reducers: {
-    getBeersSortSuccess: (
-      state,
-      action: PayloadAction<InitialStateType['beersSort']>,
-    ) => {
+    getBeersSortSuccess: (state, action: PayloadAction<InitialStateType['beersSort']>) => {
       state.beersSort = action.payload;
       state.isLoading = false;
     },
-    getBeersSortFetch: (
-      state,
-      action: PayloadAction<InitialStateType['alcohol']>,
-    ) => {
+    getBeersSortFetch: (state, action: PayloadAction<InitialStateType['alcohol']>) => {
       state.isLoading = true;
       state.alcohol = action.payload;
     },
-    getBeersAllSuccess: (
-      state,
-      action: PayloadAction<InitialStateType['beers']>,
-    ) => {
+    getBeersAllSuccess: (state, action: PayloadAction<InitialStateType['beers']>) => {
       state.beers = action.payload;
       state.isLoading = false;
     },
@@ -53,10 +44,7 @@ const appReducer = createSlice({
     getBeerError: (state, action: PayloadAction<InitialStateType['error']>) => {
       state.error = action.payload;
     },
-    getBeerSuccess: (
-      state,
-      action: PayloadAction<InitialStateType['beerRandom']>,
-    ) => {
+    getBeerSuccess: (state, action: PayloadAction<InitialStateType['beerRandom']>) => {
       state.beerRandom = action.payload;
     },
     getBeerFinally: (state) => {

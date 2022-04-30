@@ -1,7 +1,7 @@
-import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {TabStack} from './TabStack';
-import {MapContainer} from '../screens/MapContainer';
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { TabStack } from "./TabStack";
+import { MapContainer } from "../screens/MapContainer";
 
 export type RootStackParamList = {
   HomeScreen: undefined;
@@ -23,7 +23,8 @@ export const Navigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-      }}>
+      }}
+    >
       <Stack.Screen name="TabStack" component={TabStack} />
       <Stack.Screen name="MapContainer" component={MapContainer} />
     </Stack.Navigator>
