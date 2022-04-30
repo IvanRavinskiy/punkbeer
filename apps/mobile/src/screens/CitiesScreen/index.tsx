@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { ScreenKey } from "../../enums";
 import type { Props } from "./types";
 import { cityLocations } from "../../data/cityLocations";
-import { CityLocationType } from "../../data/cityLocations/types";
+import type { CityLocationType } from "../../data/cityLocations/types";
 
 export const CitiesScreen = () => {
   const navigation = useNavigation<Props>();

@@ -1,4 +1,4 @@
-import { CityLocationType } from "../../screens/CitiesScreen";
+import type { CityLocationType } from "../../screens/CitiesScreen";
 
 export const cityLocations: CityLocationType[] = [
   {
