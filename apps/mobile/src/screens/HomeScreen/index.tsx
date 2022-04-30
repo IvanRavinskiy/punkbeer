@@ -6,16 +6,11 @@ import {
   useAppSelector,
 } from "@iwann/store";
 import React, { useEffect } from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
-import { SvgBeerRN } from "../assets/svg/SvgBeerRN";
-import { BeerPost } from "../components/BeerPost";
+import { SvgBeerRN } from "../../assets/svg/SvgBeerRN";
+import { BeerPost } from "../../components/BeerPost";
+import { stylesHomeScreen } from "./styles";
 
 export const HomeScreen = () => {
   const beers = useAppSelector(SelectBeers);
@@ -26,12 +21,12 @@ export const HomeScreen = () => {
   }, [dispatch]);
   return (
     <>
-      <View style={styles.TopContainer}>
+      <View style={stylesHomeScreen.TopContainer}>
         <TouchableOpacity>
-          <Text>PUNK BEER</Text>
+          <Text>{"PUNK BEER"}</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-          <SvgBeerRN color="black" />
+          <SvgBeerRN color={"black"} />
         </TouchableOpacity>
       </View>
       <ScrollView>
@@ -50,14 +45,3 @@ export const HomeScreen = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  TopContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingTop: 10,
-    marginHorizontal: 20,
-  },
-});
