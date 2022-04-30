@@ -2,7 +2,7 @@ import { createGlobalStore, ReduxProvider } from "@iwann/store";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { App } from "./App";
 import storage from "redux-persist/lib/storage";
 
 const { store } = createGlobalStore(storage);

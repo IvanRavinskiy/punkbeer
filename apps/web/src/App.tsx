@@ -5,7 +5,14 @@ import { useAppDispatch, useAppSelector } from "@iwann/store/src/hooks";
 import React from "react";
 import "./App.css";
 
-function App() {
+// const { store } = createGlobalStore(storage);
+
+// export const ProvideredApp = () => {
+//   ReduxProvider(App, store)();
+// };
+// not working by this way
+
+export function App() {
   const beerRandom = useAppSelector(
     (state: AppRootStateType) => state.app.beerRandom
   );
@@ -16,28 +23,24 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className={"App"}>
+      <header className={"App-header"}>
         {greeting()}
         <div>
-          <h2>RANDOM BEER</h2>
-          {beerRandom.map((beer) => {
+          <h2>{"RANDOM BEER"}</h2>
+          {beerRandom.map(({ id, name, image_url }) => {
             return (
-              <div key={beer.id}>
-                <div>Beer title: {beer.name}</div>
-                <img
-                  alt="beer pic"
-                  style={{ width: "50px" }}
-                  src={beer.image_url}
-                />
+              <div key={id}>
+                <div>
+                  {"Beer title: "} {name}
+                </div>
+                <img alt={"beer pic"} className={"image"} src={image_url} />
               </div>
             );
           })}
-          <button onClick={onGetBeerHandler}>get random beer</button>
+          <button onClick={onGetBeerHandler}>{"get random beer"}</button>
         </div>
       </header>
     </div>
   );
 }
-
-export default App;
