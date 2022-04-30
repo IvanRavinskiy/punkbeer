@@ -1,7 +1,7 @@
 import { greeting } from "@iwann/greeting";
-import { AppRootStateType } from "@iwann/store";
 import { getBeerFetch } from "@iwann/store/src/appReducer";
 import { useAppDispatch, useAppSelector } from "@iwann/store/src/hooks";
+import { SelectRandomBeer } from "@iwann/store/src/selectors";
 import React from "react";
 import "./App.css";
 
@@ -13,9 +13,7 @@ import "./App.css";
 // not working by this way
 
 export function App() {
-  const beerRandom = useAppSelector(
-    (state: AppRootStateType) => state.app.beerRandom
-  );
+  const beerRandom = useAppSelector(SelectRandomBeer);
   const dispatch = useAppDispatch();
 
   const onGetBeerHandler = () => {

@@ -6,7 +6,7 @@ import {
   getBeerSuccess,
   InitialStateType,
 } from './appReducer';
-import { SelectAlcohol } from './selectors/SelectAlcohol';
+import { SelectAlcohol } from './selectors';
 import { SagaPattern } from './enums/SagaPattern';
 
 // const api = createAPI(process.env.REACT_APP_BASE_URL); //DONT WORK IN MOBILE, ONLY WEB
