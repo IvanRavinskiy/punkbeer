@@ -2,10 +2,10 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { MapScreen } from "./MapScreen";
-import { RootStackParamList } from "../navigation/Navigator";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { SvgBeerRN } from "../assets/svg/SvgBeerRN";
+import { RootStackParamList } from "../navigation/StackNavigator/types";
 
 type Props = NativeStackScreenProps<RootStackParamList, "MapContainer">;
 
