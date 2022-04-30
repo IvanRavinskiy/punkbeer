@@ -1,4 +1,11 @@
-import React from "react";
+import { BeerType } from "@iwann/api";
+import {
+  getBeerAllFetch,
+  SelectBeers,
+  useAppDispatch,
+  useAppSelector,
+} from "@iwann/store";
+import React, { useEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -11,6 +18,12 @@ import { SvgBeerRN } from "../assets/svg/SvgBeerRN";
 import { BeerPost } from "../components/BeerPost";
 
 export const HomeScreen = () => {
+  const beers = useAppSelector(SelectBeers);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getBeerAllFetch());
+  }, [dispatch]);
   return (
     <>
       <View style={styles.TopContainer}>
@@ -22,7 +35,17 @@ export const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        <BeerPost />
+        {beers.map((beerItem: BeerType) => {
+          const { id, name, image_url, description } = beerItem;
+          return (
+            <BeerPost
+              id={id}
+              name={name}
+              description={description}
+              image_url={image_url}
+            />
+          );
+        })}
       </ScrollView>
     </>
   );
