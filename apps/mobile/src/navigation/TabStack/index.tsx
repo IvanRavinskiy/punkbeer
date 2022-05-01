@@ -3,7 +3,7 @@ import { HomeScreen } from "../../screens/HomeScreen";
 import { RandomScreen } from "../../screens/RandomBeerScreen";
 import React from "react";
 import { SvgBeerRN } from "../../assets/svg/SvgBeerRN";
-import { SearchScreen } from "../../screens/SearchScreen";
+import { SearchScreen } from "../../screens/SearchBeerScreen";
 import { CitiesScreen } from "../../screens/CitiesScreen";
 import type { TabNavigationParamList } from "./types";
 import { ScreenKey } from "../../enums";

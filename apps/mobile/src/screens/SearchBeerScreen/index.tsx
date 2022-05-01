@@ -1,32 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import {
-  AppRootStateType,
   getBeersSortFetch,
+  SelectBeerSort,
   useAppDispatch,
   useAppSelector,
 } from "@iwann/store";
-import { BeerType } from "@iwann/api";
+import type { BeerType } from "@iwann/api";
+import {
+  PRIMAL_COLOR,
+  SECOND_COLOR,
+} from "../../assets/color/multisliderColor";
+import { SearchBeerScreenStyles } from "./styles";
 
 export const SearchScreen = () => {
-  const sortedBeers = useAppSelector(
-    (state: AppRootStateType) => state.app.beersSort
-  );
+  const sortedBeers = useAppSelector(SelectBeerSort);
   const dispatch = useAppDispatch();
-  const [multiSliderValue, setMultiSliderValue] = useState([0, 100]);
-  useEffect(() => {
-    dispatch(getBeersSortFetch(multiSliderValue));
-  }, [dispatch]);
-  const ABVChange = (values: number[]) => setMultiSliderValue(values);
   const ABVDispatchToState = (values: number[]) => {
     dispatch(getBeersSortFetch(values));
   };
 
+  const [multiSliderValue, setMultiSliderValue] = useState([0, 100]);
+  const ABVChange = (values: number[]) => setMultiSliderValue(values);
+
+  useEffect(() => {
+    dispatch(getBeersSortFetch(multiSliderValue));
+  }, [dispatch]);
+
   return (
-    <View style={styles.SliderContainer}>
-      <Text>Alcohol volume</Text>
-      <View style={styles.SliderValues}>
+    <View style={SearchBeerScreenStyles.SliderContainer}>
+      <Text>{"Alcohol volume"}</Text>
+      <View style={SearchBeerScreenStyles.SliderValues}>
         <Text>{multiSliderValue[0]} </Text>
         <Text>{multiSliderValue[1]}</Text>
       </View>
@@ -41,10 +46,10 @@ export const SearchScreen = () => {
         minMarkerOverlapDistance={10}
         sliderLength={350}
         selectedStyle={{
-          backgroundColor: "#0095ff",
+          backgroundColor: PRIMAL_COLOR,
         }}
         trackStyle={{
-          backgroundColor: "#ababab",
+          backgroundColor: SECOND_COLOR,
         }}
         touchDimensions={{
           height: 40,
@@ -54,17 +59,18 @@ export const SearchScreen = () => {
         }}
       />
       <ScrollView>
-        {sortedBeers.map((beer: BeerType) => {
+        {sortedBeers.map((sortedBeer: BeerType) => {
+          const { id, name, image_url, abv } = sortedBeer;
           return (
-            <View key={beer.id}>
-              <Text>{beer.name}</Text>
+            <View key={id}>
+              <Text>{name}</Text>
               <Image
-                style={styles.image}
+                style={SearchBeerScreenStyles.image}
                 source={{
-                  uri: `${beer.image_url}`,
+                  uri: `${image_url}`,
                 }}
               />
-              <Text>ALCOHOL: {beer.abv} °</Text>
+              <Text>{`ALCOHOL: ${abv} °`}</Text>
             </View>
           );
         })}
@@ -72,20 +78,3 @@ export const SearchScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  SliderContainer: {
-    padding: 20,
-  },
-  SliderValues: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingTop: 10,
-  },
-  image: {
-    width: 21,
-    height: 80,
-  },
-});
