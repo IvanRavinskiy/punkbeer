@@ -1,4 +1,12 @@
-import type { CityLocationType } from "../../screens/CitiesScreen";
+// import type { CityLocationType } from "../../screens/CitiesScreen";
+// why import dont work
+
+type CityLocationType = {
+  id: number;
+  city: string;
+  lat: number;
+  lgt: number;
+};
 
 export const cityLocations: CityLocationType[] = [
   {
