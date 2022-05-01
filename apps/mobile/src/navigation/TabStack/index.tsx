@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeScreen } from "../../screens/HomeScreen";
-import { RandomScreen } from "../../screens/RandomScreen";
+import { RandomScreen } from "../../screens/RandomBeerScreen";
 import React from "react";
 import { SvgBeerRN } from "../../assets/svg/SvgBeerRN";
 import { SearchScreen } from "../../screens/SearchScreen";
