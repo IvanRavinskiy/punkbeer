@@ -1,18 +1,13 @@
 import { greeting } from "@iwann/greeting";
+import { createGlobalStore, ReduxProvider } from "@iwann/store";
 import { getBeerFetch } from "@iwann/store/src/appReducer";
 import { useAppDispatch, useAppSelector } from "@iwann/store/src/hooks";
 import { SelectRandomBeer } from "@iwann/store/src/selectors";
 import React from "react";
+import storage from "redux-persist/lib/storage";
 import "./App.css";
 
-// const { store } = createGlobalStore(storage);
-
-// export const ProvideredApp = () => {
-//   ReduxProvider(App, store)();
-// };
-// not working by this way
-
-export function App() {
+const App = () => {
   const beerRandom = useAppSelector(SelectRandomBeer);
   const dispatch = useAppDispatch();
 
@@ -26,7 +21,8 @@ export function App() {
         {greeting()}
         <div>
           <h2>{"RANDOM BEER"}</h2>
-          {beerRandom.map(({ id, name, image_url }) => {
+          {beerRandom.map((props) => {
+            const { id, name, image_url } = props;
             return (
               <div key={id}>
                 <div>
@@ -41,4 +37,10 @@ export function App() {
       </header>
     </div>
   );
-}
+};
+
+const { store } = createGlobalStore(storage);
+
+export const AppWeb = () => {
+  return <ReduxProvider App={App} store={store} />;
+};
