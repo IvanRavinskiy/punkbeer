@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import { Image, Text, View } from "react-native";
 import { beerPostStyles } from "./styles";
-import type { BeerPostType } from "./types";
+import type { BeerPostProps } from "./types";
 
-export const BeerPost = (beer: BeerPostType) => {
+export const BeerPost: FC<BeerPostProps> = (beer) => {
   const { id, name, image_url, description } = beer;
   return (
     <View key={id}>
