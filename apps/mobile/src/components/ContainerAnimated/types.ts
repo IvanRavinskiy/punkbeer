@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type ContainerAnimatedProps = {
-  children;
+  children: ReactNode | undefined;
 };
