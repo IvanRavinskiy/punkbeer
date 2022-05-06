@@ -1,7 +1,8 @@
 import * as React from "react";
 import { FC, useEffect, useRef } from "react";
-import { Animated, View } from "react-native";
+import { Animated } from "react-native";
 import { ContainerAnimatedProps } from "./types";
+import { ContainerAnimatedStyles } from "./styles";
 
 export const ContainerAnimated: FC<ContainerAnimatedProps> = (props) => {
   const { children } = props;
@@ -10,7 +11,7 @@ export const ContainerAnimated: FC<ContainerAnimatedProps> = (props) => {
     Animated.timing(valueAnimate, {
       toValue: 0,
       useNativeDriver: true,
-      duration: 10000,
+      duration: 1000,
     }).start();
   };
   useEffect(() => {
@@ -28,10 +29,11 @@ export const ContainerAnimated: FC<ContainerAnimatedProps> = (props) => {
 
   return (
     <Animated.View
-      style={{
-        transform: [{ translateX }, { rotate }],
-        justifyContent: "center",
-      }}
+      style={
+        ContainerAnimatedStyles.container && {
+          transform: [{ translateX }, { rotate }],
+        }
+      }
     >
       {children}
     </Animated.View>
