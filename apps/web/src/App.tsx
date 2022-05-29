@@ -1,52 +1,46 @@
 import { greeting } from "@iwann/greeting";
-import { AppRootStateType } from "@iwann/store";
-import { decrease, getBeerFetch, increase } from "@iwann/store/src/appReducer";
+import { createGlobalStore, ReduxProvider } from "@iwann/store";
+import { getBeerFetch } from "@iwann/store/src/appReducer";
 import { useAppDispatch, useAppSelector } from "@iwann/store/src/hooks";
+import { SelectRandomBeer } from "@iwann/store/src/selectors";
 import React from "react";
+import storage from "redux-persist/lib/storage";
 import "./App.css";
 
-function App() {
-  const value = useAppSelector((state: AppRootStateType) => state.app.value);
-  const beers = useAppSelector((state: AppRootStateType) => state.app.beers);
+const App = () => {
+  const beerRandom = useAppSelector(SelectRandomBeer);
   const dispatch = useAppDispatch();
 
   const onGetBeerHandler = () => {
     dispatch(getBeerFetch());
   };
-  const onIncreaseClick = () => {
-    dispatch(increase(value));
-  };
-  const onDecreaseClick = () => {
-    dispatch(decrease(value));
-  };
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className={"App"}>
+      <header className={"App-header"}>
         {greeting()}
         <div>
-          <h2>RANDOM BEER</h2>
-          {beers.map((beer) => {
+          <h2>{"RANDOM BEER"}</h2>
+          {beerRandom.map((props) => {
+            const { id, name, image_url } = props;
             return (
-              <div key={beer.id}>
-                <div>Beer title: {beer.name}</div>
-                <img
-                  alt="beer pic"
-                  style={{ width: "50px" }}
-                  src={beer.image_url}
-                />
+              <div key={id}>
+                <div>
+                  {"Beer title: "} {name}
+                </div>
+                <img alt={"beer pic"} className={"image"} src={image_url} />
               </div>
             );
           })}
-          <button onClick={onGetBeerHandler}>get random beer</button>
-        </div>
-        <div>
-          value: {value}
-          <button onClick={onIncreaseClick}>+</button>
-          <button onClick={onDecreaseClick}>-</button>
+          <button onClick={onGetBeerHandler}>{"get random beer"}</button>
         </div>
       </header>
     </div>
   );
-}
+};
 
-export default App;
+const { store } = createGlobalStore(storage);
+
+export const AppWeb = () => {
+  return <ReduxProvider App={App} store={store} />;
+};

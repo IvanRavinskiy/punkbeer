@@ -1,41 +1,66 @@
 import { BeerType } from '@iwann/api';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type initialStateType = {
-  value: number;
+export type InitialStateType = {
   beers: BeerType[];
+  beerRandom: BeerType[];
   isLoading: boolean;
+  error: null;
+  alcohol: number[];
+  beersSort: BeerType[];
 };
 
-const initialState: initialStateType = {
-  value: 0,
+const initialState: InitialStateType = {
   beers: [],
+  beerRandom: [],
   isLoading: false,
+  error: null,
+  alcohol: [],
+  beersSort: [],
 };
 
 const appReducer = createSlice({
   name: 'appReducer',
   initialState,
   reducers: {
-    getBeerFetch: (state) => {
-      state.isLoading = true;
+    getBeersSortSuccess: (state, action: PayloadAction<InitialStateType['beersSort']>) => {
+      state.beersSort = action.payload;
+      state.isLoading = false;
     },
-    getBeerSuccess: (state, action) => {
+    getBeersSortFetch: (state, action: PayloadAction<InitialStateType['alcohol']>) => {
+      state.isLoading = true;
+      state.alcohol = action.payload;
+    },
+    getBeersAllSuccess: (state, action: PayloadAction<InitialStateType['beers']>) => {
       state.beers = action.payload;
       state.isLoading = false;
     },
+    getBeerAllFetch: (state) => {
+      state.isLoading = true;
+    },
+    getBeerFetch: (state) => {
+      state.isLoading = true;
+    },
+    getBeerError: (state, action: PayloadAction<InitialStateType['error']>) => {
+      state.error = action.payload;
+    },
+    getBeerSuccess: (state, action: PayloadAction<InitialStateType['beerRandom']>) => {
+      state.beerRandom = action.payload;
+    },
     getBeerFinally: (state) => {
       state.isLoading = false;
-    },
-    increase: (state, action) => {
-      state.value = action.payload + 1;
-    },
-    decrease: (state, action) => {
-      state.value = action.payload - 1;
     },
   },
 });
 
 export default appReducer.reducer;
-export const { getBeerFetch, getBeerSuccess, increase, decrease } =
-  appReducer.actions;
+export const {
+  getBeersSortSuccess,
+  getBeersSortFetch,
+  getBeersAllSuccess,
+  getBeerAllFetch,
+  getBeerFetch,
+  getBeerSuccess,
+  getBeerFinally,
+  getBeerError,
+} = appReducer.actions;

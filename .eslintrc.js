@@ -1,10 +1,14 @@
 module.exports = {
   root: true,
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    // 'plugin:react/recommended',
+    'prettier',
+  ],
   env: {
-    browser: true,
-    jest: true,
-    commonjs: true,
+    // browser: true,
+    // jest: true,
+    // commonjs: true,
     node: true,
   },
   parserOptions: {

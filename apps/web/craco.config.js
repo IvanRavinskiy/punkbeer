@@ -12,7 +12,10 @@ packages.push(path.join(__dirname, "../../components"));
 
 module.exports = {
   webpack: {
-    configure: (webpackConfig) => {
+    configure: (webpackConfig, { paths }) => {
+      paths.appIndexJs = path.join(__dirname, "index.js");
+      paths.appSrc = path.join(__dirname);
+      webpackConfig.entry = paths.appIndexJs;
       const { isFound, match } = getLoader(
         webpackConfig,
         loaderByName("babel-loader")
